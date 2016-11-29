@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/Timer.js"></script>
+
+<script>
+    window.onload = function(){
+        var doms = document.getElementById("timer")
+
+        Timer.init(doms);
+
+        var stopTime = function(){
+            Timer.stopTimer();
+        } 
+    };
+
+    
+</script>
+</head>
+<body>
+    <h1 id="timer"></h1>
+    <button id="stopTimer" onclick="stopTime()">暂停</button>
+</body>
+</html>
