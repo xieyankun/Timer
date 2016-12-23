@@ -1,4 +1,5 @@
 (function(window){
+    
     var Timer = {
         options: {
             seconds: 1,     // 秒数
@@ -9,7 +10,7 @@
 
         init: function(options){
             var _this = this;
-            this.options.dom = document.getElementById("timer");
+            // this.options.dom = document.getElementById("timer");
 
             this.startTimer();
 

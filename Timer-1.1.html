@@ -16,6 +16,7 @@
 <body>
     <div class="timer">
         <h1 id="timer">00:00:00</h1>
+        <h1 id="hourglass">00:00:00</h1>
         <button class="btn" id="startTimer">开始计时</button>
         <button class="btn" id="pauseTimer">暂停计时</button>
         <button class="btn" id="continueTimer">继续计时</button>
@@ -25,11 +26,13 @@
 
 <script>
     $(function(){
-        // var doms = document.getElementById("timer")
+        var hourglass = document.getElementById("hourglass")
 
         $('#startTimer').click(function(){
             console.log('==========')
-            Timer.init();
+            Timer.init({
+                dom: hourglass
+            });
         })
 
         $('#pauseTimer').click(function(){
