@@ -1,0 +1,18 @@
+{
+    "Name": "Bob",
+    "Age": 32,
+    "Company": "IBM",
+    "Engineer": true
+},
+{
+    "Name": "John",
+    "Age": 20,
+    "Company": "Oracle",
+    "Engineer": false
+},
+{
+    "Name": "Henry",
+    "Age": 45,
+    "Company": "Microsoft",
+    "Engineer": false
+}

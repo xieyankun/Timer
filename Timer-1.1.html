@@ -5,7 +5,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <script src="js/jquery-2.0.3.js"></script>
-    <script src="js/Timer.js"></script>
+    <script src="js/Timer-1.1.js"></script>
 
 <style>
     .timer{
@@ -20,6 +20,7 @@
         <button class="btn" id="pauseTimer">暂停计时</button>
         <button class="btn" id="continueTimer">继续计时</button>
         <button class="btn" id="stopTimer">停止计时</button>
+        <button class="btn" id="seconds">当前秒数</button>
     </div>
 
 <script>
@@ -27,20 +28,26 @@
         // var doms = document.getElementById("timer")
 
         $('#startTimer').click(function(){
+            console.log('==========')
             Timer.init();
         })
 
         $('#pauseTimer').click(function(){
-            Timer.getMilliSeconds();
+            Timer.pauseTimer();
         })
 
         $('#continueTimer').click(function(){
-            Timer.getMilliSeconds();
+            Timer.pauseTimer();
         })
 
         $('#stopTimer').click(function(){
             Timer.stopTimer();
         })
+
+        $('#seconds').click(function(){
+            Timer.getSeconds();
+        })
+
 
     })
 </script>

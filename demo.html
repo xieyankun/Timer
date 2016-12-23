@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="js/jquery-2.0.3.js"></script>
+
+<style>
+    .timer{
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="timer">
+    <h1 id="timer">00:00:00</h1>
+    <button class="btn" id="id_1">开始计时</button>
+    <button class="btn" id="id_2">暂停计时</button>
+    <button class="btn" id="id_3">继续计时</button>
+    <button class="btn" id="id_4">停止计时</button>
+</div>
+
+
+
+<script>
+
+$(function(){
+    var str;
+    var obj = {
+        a: 1,
+        b: 3,
+        init: function(){
+            $.ajax({
+                type: "GET",
+                url: "data.json",
+                success: function(data) {
+                    console.log(data)
+                    this.c = 'Hello';
+                },
+                error: function(data){
+                    console.log(data)
+                    str = 'Hello';
+                }
+            });
+
+            $('#id_1').click(function(){
+                console.log(str);
+            })
+        }
+    }
+
+    obj.init();
+    $('#id_2').click(function(){
+        console.log(str);
+    })
+})
+
+
+</script>
+</body>
+</html>
