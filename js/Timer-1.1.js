@@ -10,50 +10,52 @@
         init: function(options){
             var _this = this;
             this.options.dom = document.getElementById("timer");
+
             this.startTimer();
 
             this.options = $.extend(this.options, options);
 
         },
         getSeconds: function(){
-            var seconds = Timer.options.seconds;
+            var seconds = this.options.seconds;
             return seconds
         },
-        formatTime: function(s){
+        formatTime: function(secs){
             var _dom = Timer.options.dom;
-            var _status = this.options.status
-            var seconds = this.getSeconds();
             var time,
-                h = 0,
-                m = 0,
-                s = seconds
-            // _status == 1 ? s = 1 : s = seconds;
-                
-            return function(){
-                if (s > 0 && s % 60 == 0) {
-                    m += 1;
-                    s = 0;
-                }
-                if (m > 0 && m % 60 == 0) {
-                    h += 1;
-                    m = 0;
-                }
-                time = (h < 10 ? '0' + h : h) + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s);
-                console.log(_dom)
+                hour = 0,
+                min = 0,
+                seconds = secs
+            console.log(seconds);
 
-                _dom.innerHTML = time;
-                _dom.value = Timer.options.seconds;
+            if (seconds > 60) {
+                min = parseInt(seconds / 60);
+                seconds = parseInt(seconds % 60);
 
-                s += 1;
-                Timer.options.seconds += 1;
+                if(min > 60){
+                    hour = parseInt(min / 60);
+                    min = parseInt(min % 60);
+                }
             }
+
+            hour = hour < 10 ? ('0' + hour) : hour;
+            min = min < 10 ? ('0' + min) : min;
+            seconds = seconds < 10 ? ('0' + seconds) : seconds;
+
+            time = hour + ':'+ min + ':' + seconds;
+
+            _dom.innerHTML = time;
+            _dom.value = Timer.options.seconds;
+
+            Timer.options.seconds += 1;
+
         },
 
         startTimer: function(){
-            console.log('++++++++++')
-            var _formatTime = this.formatTime();
             clearInterval(this.options.timer);
-            this.options.timer = setInterval(_formatTime, 1000);
+            this.options.timer = setInterval(function(){
+                Timer.formatTime(Timer.getSeconds())
+            }, 1000);
         },
 
         pauseTimer: function(){
